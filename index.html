@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ponto de Achado | Achados e Perdidos</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ==============================
+         CABEÇALHO
+    =============================== -->
+
+    <header class="header">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                📍
+            </div>
+
+            <div>
+                <h1>Ponto de Achado</h1>
+                <p>Mural de Achados & Perdidos</p>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main class="container">
+
+        <!-- ==============================
+             APRESENTAÇÃO
+        =============================== -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="hero-label">
+                    🔎 Comunidade
+                </span>
+
+                <h2>
+                    Perdeu ou encontrou algo?
+                </h2>
+
+                <p>
+                    Cadastre o item no Ponto de Achado
+                    e ajude a devolvê-lo ao seu dono.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             CONTADORES
+        =============================== -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📦
+                </div>
+
+                <div>
+                    <strong id="contadorTotal">0</strong>
+                    <span>Total de itens</span>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon perdido-icon">
+                    🔴
+                </div>
+
+                <div>
+                    <strong id="contadorPerdidos">0</strong>
+                    <span>Perdidos</span>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon encontrado-icon">
+                    🟢
+                </div>
+
+                <div>
+                    <strong id="contadorEncontrados">0</strong>
+                    <span>Encontrados</span>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon resolvido-icon">
+                    ✅
+                </div>
+
+                <div>
+                    <strong id="contadorResolvidos">0</strong>
+                    <span>Resolvidos</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             CADASTRO
+        =============================== -->
+
+        <section class="form-container">
+
+            <div class="section-title">
+
+                <div class="section-icon">
+                    📋
+                </div>
+
+                <div>
+                    <h2>Cadastrar um item</h2>
+
+                    <p>
+                        Preencha as informações abaixo.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div
+                id="feedback"
+                class="feedback">
+            </div>
+
+
+            <form id="itemForm">
+
+                <div class="form-grid">
+
+                    <!-- TIPO -->
+
+                    <div class="form-group">
+
+                        <label for="tipo">
+                            Tipo do registro
+                        </label>
+
+                        <select
+                            id="tipo"
+                            required
+                        >
+
+                            <option value="">
+                                Selecione uma opção
+                            </option>
+
+                            <option value="perdido">
+                                🔴 Perdi um item
+                            </option>
+
+                            <option value="encontrado">
+                                🟢 Encontrei um item
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- NOME -->
+
+                    <div class="form-group">
+
+                        <label for="nome">
+                            Nome do item
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nome"
+                            placeholder="Ex.: Carteira preta"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- DESCRIÇÃO -->
+
+                    <div class="form-group full">
+
+                        <label for="descricao">
+                            Descrição
+                        </label>
+
+                        <textarea
+                            id="descricao"
+                            placeholder="Informe cor, marca, características ou outros detalhes..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- LOCAL -->
+
+                    <div class="form-group">
+
+                        <label for="local">
+                            📍 Local
+                        </label>
+
+                        <input
+                            type="text"
+                            id="local"
+                            placeholder="Onde foi perdido ou encontrado?"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- CONTATO -->
+
+                    <div class="form-group">
+
+                        <label for="contato">
+                            📞 Contato
+                        </label>
+
+                        <input
+                            type="text"
+                            id="contato"
+                            placeholder="Telefone, e-mail ou outra forma de contato"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- IMAGEM -->
+
+                    <div class="form-group full">
+
+                        <label for="imagem">
+                            🖼️ Imagem do item
+                        </label>
+
+                        <input
+                            type="file"
+                            id="imagem"
+                            accept="image/*"
+                        >
+
+                        <div id="previewContainer"></div>
+
+                    </div>
+
+
+                    <!-- BOTÃO -->
+
+                    <div class="form-group full">
+
+                        <button
+                            class="btn btn-primary"
+                            type="submit"
+                        >
+                            + Cadastrar item
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- ==============================
+             CONTROLES
+        =============================== -->
+
+        <section class="controls">
+
+            <!-- BUSCA -->
+
+            <div class="search-box">
+
+                <label for="busca">
+                    🔍 Buscar no mural
+                </label>
+
+                <input
+                    type="search"
+                    id="busca"
+                    placeholder="Pesquise por nome, local ou descrição..."
+                >
+
+                <small>
+                    Atalho: Ctrl + K
+                </small>
+
+            </div>
+
+
+            <!-- FILTROS -->
+
+            <div class="filter-area">
+
+                <label>
+                    Filtrar por
+                </label>
+
+                <div class="filters">
+
+                    <button
+                        class="btn filter-btn active"
+                        data-filter="todos"
+                        type="button"
+                    >
+                        Todos
+                    </button>
+
+                    <button
+                        class="btn filter-btn"
+                        data-filter="perdido"
+                        type="button"
+                    >
+                        Perdidos
+                    </button>
+
+                    <button
+                        class="btn filter-btn"
+                        data-filter="encontrado"
+                        type="button"
+                    >
+                        Encontrados
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ORDENAÇÃO -->
+
+            <div class="sort-area">
+
+                <label for="ordenacao">
+                    Ordenar por
+                </label>
+
+                <select id="ordenacao">
+
+                    <option value="recentes">
+                        Mais recentes
+                    </option>
+
+                    <option value="antigos">
+                        Mais antigos
+                    </option>
+
+                    <option value="nome">
+                        Nome
+                    </option>
+
+                    <option value="favoritos">
+                        Favoritos
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             MURAL
+        =============================== -->
+
+        <section class="mural-section">
+
+            <div class="mural-title">
+
+                <div>
+                    <h2>
+                        Mural de itens
+                    </h2>
+
+                    <p>
+                        Confira os itens cadastrados.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div
+                id="items"
+                class="items">
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==============================
+         RODAPÉ
+    =============================== -->
+
+    <footer>
+
+        <div class="footer-logo">
+            📍 Ponto de Achado
+        </div>
+
+        <p>
+            Conectando pessoas aos seus objetos.
+        </p>
+
+        <span>
+            Mini App • Achados & Perdidos
+        </span>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
